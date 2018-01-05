@@ -8,10 +8,13 @@ import { Route, Router, ActivatedRoute, Params } from '@angular/router';
 // 引入路由
 import { routing } from './app.routing';
 import { ToolbatComponent } from './toolbat/toolbat.component';
+import { CestComponent } from './cest/cest.component';
+
 import { BaToolBar } from './baToolBar/baToolBar.component';
 import { BaToolbarDataService } from './baToolBar/baToolBar.service';
-import { DataTableModule, SharedModule, TreeModule, TreeNode, TreeDragDropService } from 'primeng/primeng';
+import { DataTableModule, SharedModule, TreeModule, TreeNode } from 'primeng/primeng';
 import { CarService } from './primeng/carService';
+import { TransferenceService } from './home/home.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,16 +22,18 @@ import { CarService } from './primeng/carService';
     HomeComponent,
     ToolbatComponent,
     BaToolBar,
+    CestComponent,
   ],
   imports: [
     RouterModule,
     BrowserModule,
     routing,
-    DataTableModule,
-    SharedModule,
-    TreeModule,
+    // DataTableModule,
+    // SharedModule,
+    // TreeModule,
   ],
-  providers: [BaToolbarDataService, CarService, TreeDragDropService],
+  // CarService, TreeDragDropService
+  providers: [BaToolbarDataService, CarService, TransferenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

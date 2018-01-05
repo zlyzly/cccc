@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarService } from './carService';
+import { TransferenceService } from '../home/home.service';
 @Component({
   selector: 'app-primeng',
   templateUrl: './primeng.component.html',
@@ -10,9 +11,21 @@ export class PrimengComponent implements OnInit {
   sales: any[];
   tree: object[] = [];
   files: object[] = [];
-  constructor(private carService: CarService) { }
+  whatDo: string;
+  constructor(private carService: CarService, protected srv: TransferenceService) { }
 
   ngOnInit() {
+    // 调用注册的事件
+    this.srv.registerToolClick((e) => {
+      if (e === "吃饭") {
+        this.whatDo = `自己做饭，不能吃外卖！`;
+        // console.log(`点外卖`);
+      }
+      if (e === "回家") {
+        this.whatDo = `回家比需锁门！`;
+        // console.log(`锁门`);
+      }
+    })
     // this.cars = [
     //   { "brand": "VW", "year": 2012, "color": "Orange", "vin": "dsad231ff" },
     //   { "brand": "Audi", "year": 2011, "color": "Black", "vin": "gwregre345" },
