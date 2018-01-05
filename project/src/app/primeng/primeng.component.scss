@@ -1,0 +1,75 @@
+// 第一种、、有重复代码可以多使用方法调用
+// @mixin title($number, $deg: 90deg, $color1: #69b7eb, $color2: #b3dbd3, $color3: #f4d6db) {
+//     text-indent: 130px;
+//     width: 50%;
+//     background: linear-gradient($deg, $color1, $color2, $color3);
+//     @if $number == 1 {
+//         color: #000;
+//         font-size: 20px;
+//         height: 30px;
+//         line-height: 30px;
+//         border-radius: 5px;
+//     } @else if $number == 2 {
+//         color: #444;
+//         font-size: 25px;
+//         height: 40px;
+//         line-height: 40px;
+//         border-radius: 5px;
+//     } @else if $number == 3 {
+//         color: #888;
+//         font-size: 30px;
+//         height: 45px;
+//         line-height: 45px;
+//         border-radius: 10px;
+//     } @else if $number == 4 {
+//         color: #bbb;
+//         font-size: 35px;
+//         height: 60px;
+//         line-height: 60px;
+//         border-radius: 15px;
+//     }
+// }
+// 第二种
+@mixin layout ($color, $unit){
+    color: $color;
+    font-size: 20px + $unit * 5px;
+    height: 20px + $unit * 10px;
+    line-height: 20px + $unit * 10px;
+    border-radius: $unit * 5px;
+}
+
+@mixin title($number, $deg: 90deg, $color1: #69b7eb, $color2: #b3dbd3, $color3: #f4d6db) {
+text-indent: 130px;
+width: 50%;
+background: linear-gradient($deg, $color1, $color2, $color3);
+@if $number == 1 { 
+    @include layout (#000, $number);
+} @else if $number == 2 {
+    @include layout (#444, $number);
+} @else if $number == 3 {
+    @include layout (#888, $number);
+} @else if $number == 4 {
+    @include layout (#bbb, $number);
+}
+}
+
+
+.title-one {
+    @include title(1);
+}
+.title-two {
+    @include title(2, 90deg, #f4d6db, #b3dbd3, #69b7eb);
+}
+.title-three {
+    @include title(3, 90deg, #ee5c87, #f1a4b5, #d587b3);
+}
+.title-four {
+    @include title(4, 90deg, #b9deed, #c7e0ed, #efefef);
+}
+.btop{
+    user-select: none;
+    -moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+}

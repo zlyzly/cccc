@@ -10,6 +10,8 @@ import { routing } from './app.routing';
 import { ToolbatComponent } from './toolbat/toolbat.component';
 import { BaToolBar } from './baToolBar/baToolBar.component';
 import { BaToolbarDataService } from './baToolBar/baToolBar.service';
+import { DataTableModule, SharedModule, TreeModule, TreeNode, TreeDragDropService } from 'primeng/primeng';
+import { CarService } from './primeng/carService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,8 +24,11 @@ import { BaToolbarDataService } from './baToolBar/baToolBar.service';
     RouterModule,
     BrowserModule,
     routing,
+    DataTableModule,
+    SharedModule,
+    TreeModule,
   ],
-  providers: [BaToolbarDataService],
+  providers: [BaToolbarDataService, CarService, TreeDragDropService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

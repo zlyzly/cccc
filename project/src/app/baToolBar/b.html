@@ -3,6 +3,21 @@
 -->
 
 <div [class.resize]="resize" class="content-top clearfix" maxHeight="100" [class.resize-alt]="!resize">
+    <!-- <ng-container *ngFor="let its of dp;">
+        <div class="abox">
+            <ng-container *ngIf='its.childs'>
+                <ng-container *ngFor='let child of its.childs;'>
+                    <ng-container *ngIf='child.childs'>
+                    </ng-container>
+                    <ng-container *ngIf='!child.childs && child.isCollapse === 0'>
+                    </ng-container>  
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf='!its.childs'>
+
+            </ng-container>
+        </div>
+    </ng-container> -->
     <ng-container *ngFor='let its of dp;let i=index;'>
         <div class="abox">
             <ng-container *ngIf='its.childs'>
@@ -16,11 +31,6 @@
                                             <div class='b_n'>
                                                 <span class='{{co.icon}}' title='{{co.text}}'></span>
                                                 <span>{{co.text}}</span>
-                                                <!--<ng-container *ngIf='i === child.childs.length-1'>
-                                                    <ng-container *ngIf='co.isCollapse !==0'>
-                                                        <span>{{co.text}}下</span>
-                                                    </ng-container>
-                                                </ng-container>-->
                                             </div>
                                         </div>
                                     </ng-container>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 @Injectable()
 export class BaToolbarDataService {
   public data = [];
@@ -43,6 +42,6 @@ export class BaToolbarDataService {
 
   ngOnInit() {
     // this.registerBaToolBar(this.data);
-    
+
   }
 }
