@@ -1,0 +1,4 @@
+@import '../primeng/primeng.component.scss';
+.title-one {
+    @include title(1);
+}
