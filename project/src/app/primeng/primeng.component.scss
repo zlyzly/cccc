@@ -30,6 +30,8 @@
 //     }
 // }
 // 第二种
+
+
 @mixin layout ($color, $unit){
     color: $color;
     font-size: 20px + $unit * 5px;
@@ -73,3 +75,4 @@ background: linear-gradient($deg, $color1, $color2, $color3);
 	-ms-user-select: none;
 	-khtml-user-select: none;
 }
+

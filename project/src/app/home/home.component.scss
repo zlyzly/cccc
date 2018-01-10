@@ -1,4 +1,156 @@
 @import '../primeng/primeng.component.scss';
+@import '../app.component.scss';
 .title-one {
     @include title(1);
+}
+
+$color:red; 
+.p{ $color:blue; color:$color;} 
+.a{ color:$color;}
+
+// $color:blue; //相当于全局变量，除非再次赋值不然就不会改变。
+p{ 
+    $color:blue; //只要赋值他就会改变，除非再次赋值 他的值才会变。
+    color:$color; 
+    // background-color:$color;如果写在这里就是蓝色。
+    a{ 
+        $color:pink; color:$color; 
+    } 
+    // background-color:$color; //为什么是红色不是蓝色，因为sass是由上而下解析的，
+    // 上一次变量已经被赋值为红色所以解析到这是是红色
+    span{ 
+        color:$color;//所以也是红色，因为$color就是这个局部的全局变量已经被再次赋值
+    } 
+} 
+div{ 
+    color:$color;
+}
+
+// 善于使用默认!default来减少再次复写代码
+
+// 再次重新赋值想要设置的数据
+$divradius:10px;//这个值必须写在 !default前边才有意义，如果写在后边意思表示在此赋值，就没有什么意义了。
+// 可以在其他页面使用，必须先定义在引入需要的scss文件。
+// 本组件页面多处需要时，要是定义了。就会执行上边的，不起用默认
+
+// @import "../home/home.component.scss";
+$divborder: 1px solid #ccc !default;
+$divpadding: 2px !default;
+$divradius: 5px !default;
+@mixin div_border($border:$divborder,$padding:$divpadding) {
+    border:$border;
+    padding: $padding;
+}
+@mixin div_rounded($radius:$divradius) {
+    border-radius: $radius;
+}
+
+.div_border{
+    @include div_border
+}
+.div_rounded{
+    @include div_rounded
+}
+
+// 多个变量一起声明 用nth($var,$index)来找到是第几个
+// $linkColor: red green;
+$linkColor: red blue !default; 
+div{
+a{ color:nth($linkColor,1); 
+    &:hover{ color:nth($linkColor,2); } 
+}
+}
+
+// @for循环
+// #{} 属性或者类名需要用变量，就会这样用.span#{$i}:类名是自己写的但是样式时循环的
+$gridColumns: 12 !default; 
+$gridcolumnWidth: 20px !default; 
+$gridGutter: 20px !default; 
+%span-base{ 
+    display:inline-block; 
+    margin-left:$gridGutter / 2; 
+    margin-right:$gridGutter / 2; 
+} 
+
+@for $i from 1 through $gridColumns {
+     .span#{$i} { 
+         @extend %span-base; 
+         width:($gridcolumnWidth + $gridGutter) * $i - $gridGutter; 
+        }
+} 
+
+// @if条件判断
+// 用于浏览器兼容,控制样式输出
+$lte7:false;
+$lte7:true !default;
+@mixin inline-block { 
+    display: inline-block; 
+    @if $lte7 { 
+        *display: inline;*zoom:1;
+    }
+    @else {
+        display:block; 
+    } 
+}
+
+main{ 
+    @include inline-block
+}
+
+// each循环图片
+@each $animal in deng, gril, hua, hua2 { 
+    .#{$animal}-icon { 
+        width: 500px;
+        height: 100px;
+        display: table-cell;
+        background: #ccc;
+        background-image: url('../theme/sass/img/#{$animal}.jpg');
+        background-position: 100%,100%; 
+    } 
+}
+
+// @extend % @function 
+// % 就是写一段代码站着位，需要用的时候在用extend引入
+// 可以使用%来代替@minxi ,这样就不用@include引入，可以使用@extend
+
+@mixin center-block{
+    text-align: center;
+}
+// .center{
+//     @include center-block
+// }
+
+%center-block { @include center-block; }
+.center{
+    @extend %center-block   
+}
+
+%clearfix { 
+    color: red;
+    background:none;
+    &:hover{
+        cursor: pointer;
+        color: blue;
+    }
+}
+
+.warp{
+    @extend %clearfix
+}
+.rows{
+    @extend %clearfix
+}
+
+
+$f00:lightblue;
+$redDark:darken($f00,50%) !default; // 作为变量值//darken讲这个颜色变暗多少百分比
+ p{ color:darken($f00,20%); }//作为属性值 lighten亮度
+
+ // px转em 
+@function pxToEm($px, $base: 16) { 
+    @return ($px / $base) * 1em; 
+}
+
+p{
+    font-size:pxToEm(20);
 }
