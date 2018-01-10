@@ -1,18 +1,22 @@
+<!-- 注册这个事件得到对应的结论-->
+<!-- 测试全局变量的sass用法 -->
+<h1 class='title-one' [innerHtml]=' whatDo ? whatDo:"测试"'></h1>
+
 <form class="form-horizontal">
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-1 control-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <label for="inputPassword3" class="col-sm-1 control-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-1 col-sm-10">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
@@ -21,11 +25,65 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-1 col-sm-10">
       <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
 </form>
-<!-- 注册这个事件得到对应的结论-->
-<h1 class='title-one' [innerHtml]=' whatDo ? whatDo:"测试"'></h1>
+<hr>
+<!-- sass变量的使用 (全局，局部)看来与js的全局局部变量概念相同-->
+<h4>变量的用法</h4>
+<div>
+  <button class='btn btn-defult p'>按钮1</button>
+  <button class='btn btn-defult a'>按钮2</button>
+</div>
 
+<p>
+  pppppp
+  <a href="">aaaaa</a>
+  <span>span</span>
+</p>
+<div>
+  div
+</div>
+<h4>!defult用法与意义</h4>
+<div class='div_border div_rounded' style='width:50px;height:50px;'></div>
+<div class='div_border div_rounded' style='width:20px;height:20px;'></div>
+
+<h4>变量可申明多个值</h4>
+<div>
+  <a href="">鼠标进入哈哈哈</a>
+</div>
+
+
+<h4>for循环</h4>
+<span class='span1'>111</span>
+<span class='span2'>222</span>
+<span class='span3'>333</span>
+<span class='span4'>444</span>
+<span class='span5'>555</span>
+<span class='span6'>666</span>
+<span class='span7'>777</span>
+<span class='span8'>888</span>
+<span class='span9'>999</span>
+
+<h4>if条件判断</h4>
+
+<main style='width:50px;height:40px;border:1px solid #ccc;'></main>
+<main style='width:30px;height:30px;border:1px solid #ccc;'></main>
+
+<h4>each循环</h4>
+<img src="" alt="" class='deng-icon'>
+<img src="" alt="" class='hua-icon'>
+<img src="" alt="" class='hua2-icon'>
+<img src="" alt="" class='gril-icon'>
+
+<h4>使用%来代替@minxi</h4>
+<div style="width:100px;height:20px;border:1px solid #ccc;" class='center'>我要居中</div>
+
+<p class='warp'>使用%%%%哈哈哈</p>
+<p class='rows'>只要用就直接调用即可</p>
+
+<p>
+  及地方机构
+</p>
