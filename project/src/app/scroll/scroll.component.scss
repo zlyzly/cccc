@@ -1,0 +1,66 @@
+// @import '../../../assets/less/variables.less';
+// @import '../../../assets/less/base.less';
+.scrolls {      
+        position: relative;
+        height: 100%;     
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+        .content {
+            height: 50px;
+            width: 100%;
+            /*border: 1px solid black;*/
+            box-shadow: 0 0 1px 0 black;
+            overflow: hidden;
+            position: relative;
+        }
+        p {
+            display: block;
+            height: 20px;
+            margin: 0;
+        }
+        .scroll {
+            display: none;
+            >div {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        //滚动条
+        .scroll{
+            background-color: #c1c1c1;
+            #scroll_{
+                background-color:pink;
+            }
+        }
+    }
+#scroll {
+    padding-top: 100px;
+    .test {
+        height: 300px;
+        width: 300px;
+        /*border: 1px solid black;*/
+        box-shadow: 0 0 1px 0 black;
+        overflow: hidden;
+        position: relative;
+    }
+    .test div {
+        /*height: 500px;*/
+        /*background-color: red;*/
+    }
+    p {
+        display: block;
+        height: 20px;
+        margin: 0;
+    }
+    .scroll {
+        display: none;
+        >div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: tr;
+        }
+    }
+}

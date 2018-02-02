@@ -24,7 +24,7 @@ childs:  子节点
  */
 @Component({
     selector: 'ba-toolbar',
-    templateUrl: './baToolBar.html',
+    templateUrl: './a.html',
     styleUrls: ['./baToolBar.scss'],
 })
 export class BaToolBar {
@@ -40,285 +40,27 @@ export class BaToolBar {
     resize = false;
     dp;
     data: any;
-    constructor(private service: BaToolbarDataService) {
-        // this.service.registerBaToolBar(this.dp);
-        let data = [
-            {
-                name: 'refresh-group',
-                icon: '',
-                text: `刷新`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '',
-                        icon: '',
-                        text: '',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                        childs: [
-                            {
-                                name: 'refresh',
-                                icon: 'ion-android-refresh',
-                                text: `刷新`,
-                                order: 1,
-                                status: "3",
-                                style: '2',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '定时刷新',
-                                icon: 'ion-load-a',
-                                text: `定时刷新`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
-                name: 'search-group',
-                icon: '',
-                text: `查询`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '查询',
-                        icon: 'ion-ios-search',
-                        text: '查询',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                    }
-                ]
-            },
-            {
-                name: 'add-group',
-                icon: '',
-                text: `新增`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '',
-                        icon: '',
-                        text: '',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                        childs: [
-                            {
-                                name: '新增',
-                                icon: 'ion-android-add',
-                                text: `新增`,
-                                order: 1,
-                                status: "3",
-                                style: '2',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '复制',
-                                icon: 'fa fa-files-o',
-                                text: `复制`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
-                name: 'print-group',
-                icon: '',
-                text: `打印`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '',
-                        icon: '',
-                        text: '',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                        childs: [
-                            {
-                                name: '打印',
-                                icon: 'ion-android-print',
-                                text: `打印`,
-                                order: 1,
-                                status: "3",
-                                style: '2',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '预览',
-                                icon: 'ion-ios-eye',
-                                text: `预览`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '设计',
-                                icon: 'ion-social-designernews',
-                                text: `设计`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '修改',
-                icon: '',
-                text: `修改`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '',
-                        icon: '',
-                        text: '',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                        childs: [
-                            {
-                                name: '修改',
-                                icon: 'ion-edit',
-                                text: `修改`,
-                                order: 1,
-                                status: "3",
-                                style: '2',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '作废',
-                                icon: 'ion-android-delete',
-                                text: `作废`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                        ]
-                    }
-                ]
-            },
-            {
-                name: '',
-                icon: '',
-                text: ``,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '配置',
-                        icon: 'ion-gear-b',
-                        text: '配置',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                    },
-                    {
-                        name: '退出',
-                        icon: 'ion-android-exit',
-                        text: '退出',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                    },
-                    {
-                        name: '列表',
-                        icon: 'ion-android-list',
-                        text: '列表',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                    },
-                ]
-            },
-            {
-                name: '提交',
-                icon: '',
-                text: `提交`,
-                status: "3",
-                order: 1,
-                style: '2',
-                isCollapse: 0,//在外边
-                childs: [
-                    {
-                        name: '',
-                        icon: '',
-                        text: '',
-                        order: 1,
-                        status: "3",
-                        style: '2',
-                        isCollapse: 0,//在外边
-                        childs: [
-                            {
-                                name: '提交',
-                                icon: 'ion-android-done',
-                                text: `提交`,
-                                order: 1,
-                                status: "3",
-                                style: '2',
-                                isCollapse: 0,//在外边
-                            },
-                            {
-                                name: '撤销',
-                                icon: 'ion-ios-undo',
-                                text: `撤销`,
-                                order: 2,
-                                status: "3",
-                                style: '1',
-                                isCollapse: 0,//在外边
-                            },
-                        ]
-                    }
-                ]
-            },
-        ]
-        this.dp = data;
+    fl: Boolean = false;
+    constructor(private dpdata: BaToolbarDataService) {
+        this.dp = dpdata;
         console.log(this.dp);
+        // this.dp.forEach((el: any) => {
+        //     el.childs.forEach((els: any) => {
+        //         if (els.childs) {
+        //             els.childs.forEach((el2: any) => {
+        //                 if (el2.isCollapse === 1) {
+        //                     console.log(el2);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
     }
     ngOnInit(): void {
 
     }
     // 图标方法.
-    lock(event) {
+    getNode(event) {
         if (event.status == '4') {
             window.confirm('需要权限！');
         }

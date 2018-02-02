@@ -3,7 +3,7 @@ import { MenubarModule, MenuItem } from 'primeng/primeng';
 @Component({
   selector: 'app-toolbat',
   templateUrl: './toolbat.component.html',
-  styleUrls: ['./toolbat.component.css']
+  styleUrls: ['./toolbat.component.scss']
 })
 export class ToolbatComponent implements OnInit {
 

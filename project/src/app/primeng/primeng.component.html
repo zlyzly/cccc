@@ -1,9 +1,23 @@
+<!-- <div (touchmove)='ontouch($event)' onTouch> -->
 <!-- 测试scss用法 -->
 <h1 class="title-one" [innerHtml]=' whatDo ? whatDo:"this is title one"'></h1>
 <h1 class="title-two">this is title two.</h1>
 <h1 class="title-three">this is title three.</h1>
 <h1 class="title-four">this is title four.</h1>
+<h3>测试监听鼠标的滚动事件</h3>
+<!--  -->
 
+<div class="parent" (scroll)='test($event)' appRainbows>
+
+  盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+  盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+  盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕 盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+  <div class="child"></div>
+</div>
+<input appRainbow>
+<div>
+  <span>{{num}}</span>
+</div>
 <!-- <div class="btop">
   <p-dataTable [value]="cars" scrollable="true" scrollHeight="200px">
     <p-header>列表</p-header>
@@ -13,7 +27,6 @@
     <p-column field="brand" header="Brand"></p-column>
     <p-column field="color" header="Color"></p-column>
   </p-dataTable>
-
 
   <h3>colgroup(横向跨列)</h3>
   <hr>
@@ -58,3 +71,28 @@
   <p-tree [value]="files" draggableNodes="true" droppableNodes="true" draggableScope="a" droppableScope="c"></p-tree>
 
 </div> -->
+<h3>引入滚动条组件</h3>
+<app-scroll>
+  <div>
+    <span>
+    盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+    盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+    盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+		盛世嫡妃放点是的腹股沟疝感受感受帝国时代根深蒂固的郭德纲水果蛋糕
+	</span>
+  </div>
+</app-scroll>
+
+<h3>引入工具栏组件测试ng-content用法</h3>
+<app-toolbat>
+  <span>这个页面是我想要在模板之外添加的特殊内容</span>
+  <p>primeng</p>
+  <span>可以通过ng-content标签在组件模板中插入一段自定义或者其他组件中独有的html</span>
+</app-toolbat>
+<!-- </div> -->

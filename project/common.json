@@ -1,0 +1,197 @@
+{
+    "compositiontype": "composition",
+    "content": [
+        {
+            "childs": [
+                {icon: "ion-android-refresh"
+            isCollapse: 0
+            order: 0
+            parent_uniqueid: "F8592542-45D5-47A2-B6BA-23AF88D9787A"
+            status: "2"
+            style: "1"
+            text: "刷新"
+            uniqueid: "923D9891-7075-4BC0-8486-5E042540C1DA"
+                },
+                {
+                icon: "ion-load-a"
+                isCollapse: 0
+                order: 1
+                parent_uniqueid: "F8592542-45D5-47A2-B6BA-23AF88D9787A"
+                status: "2"
+                style: "1"
+                text: "定时刷新"
+                uniqueid: "E5965651-0FF0-424F-9944-4C0F4F2C0440"
+                },
+                {   chjilds: [
+                        {
+                    icon: "ion-android-print"
+                    isCollapse: 0
+                    order: 1
+                    parent_uniqueid: "57E8A633-580C-40EB-9D18-0AFF3B03688F"
+                    status: "2"
+                    style: "1"
+                    text: "打印"
+                    uniqueid: "F0DE8CFF-BD14-42E7-82A4-C60D98FB3A41"
+                        },
+                        {icon: "ion-ios-eye"
+                        isCollapse: 0
+                        order: 1
+                        parent_uniqueid: "57E8A633-580C-40EB-9D18-0AFF3B03688F"
+                        status: "2"
+                        style: "1"
+                        text: "预览"
+                        uniqueid: "4A3240C1-5CAA-4BA7-A97C-0F8BF7B939A1"
+                        },
+                        {icon: "ion-socia -designernews"
+                        isCollapse: 0
+                        order: 2
+                        parent_uniqueid: "57E8A633-580C-40EB-9D18-0AFF3B03688F"
+                        status: "2"
+                        style: "1"
+                        text: "设计"
+                        uniqueid: "00F2DA0E-8FE8-4DB2-8821-3D3F64CFE37B"
+                        },
+                        {icon: "ion-unlocked"
+                        isCollapse: 0
+                        order: 3
+                        parent_uniqueid: "57E8A633-580C-40EB-9D18-0AFF3B03688F"
+                        status: "2"
+                        style: "1"
+                        text: "查看"
+                        uniqueid: "FB5D94E1-BA42-42C1-A919-9938C5FC3933"
+                        },
+                    ]
+                icon: ""
+                isCollapse: 0
+                order: 1
+                parent_uniqueid: "F8592542-45D5-47A2-B6BA-23AF88D9787A"
+                status: "2"
+                style: "1"
+                text: "打印"
+                uniqueid: "57E8A633-580C-40EB-9D18-0AFF3B03688F"
+                }
+            ]
+        icon: ""
+        isCollapse: 0
+        order: 0
+        parent_uniqueid: ""
+        status: "2"
+        style: "1"
+        text: "刷新"
+        uniqueid: "F8592542-45D5-47A2-B6BA-23AF88D9787A"
+        },
+        {
+            childs: [
+                {                    
+icon: "ion-ios-search"
+isCollapse: 0
+order: 0
+parent_uniqueid: "D474DECE-648E-4BD4-AA51-8D12F1D7AE9C"
+status: "2"
+style: "1"
+text: "查询"
+uniqueid: "F0F383AC-4C7D-41DB-8EA4-0B94F554062A"
+                }
+            ]
+            icon: ""
+            isCollapse: 0
+            order: 1
+            parent_uniqueid: ""
+            status: "2"
+            style: "1"
+            text: "查询"
+            uniqueid: "D474DECE-648E-4BD4-AA51-8D12F1D7AE9C"
+        },
+        {
+            childs: [
+                {
+            icon: "ion-android-add"
+            isCollapse: 0
+            order: 0
+            parent_uniqueid: "20083F5A-3BEA-4994-A2E3-BD0FA5F72979"
+            status: "2"
+            style: "1"
+            text: "新增"
+            uniqueid: "47409654-D821-43DB-8112-F49D8EAB93AF"
+                }
+            ]
+            icon: ""
+            isCollapse: 0
+            order: 2
+            parent_uniqueid: ""
+            status: "2"
+            style: "1"
+            text: "新增"
+            uniqueid: "20083F5A-3BEA-4994-A2E3-BD0FA5F72979"
+        },
+        {
+            icon: "ion-android-arrow-back"
+            isCollapse: 0
+            order: 3
+            parent_uniqueid: ""
+            status: "1"
+            style: "1"
+            text: "前一"
+            uniqueid: "BF8E5122-4C00-4B84-8359-9324F33303F5"
+        },
+        {icon: "ion-android-arrow-forward"
+            isCollapse: 0
+            order: 4
+            parent_uniqueid: ""
+            status: "2"
+            style: "1"
+            text: "后一"
+            uniqueid: "41C51E66-4CE4-4717-9C07-EA350119E704"
+        },
+        {icon: "ion-skip-backward"
+                isCollapse: 0
+                order: 5
+                parent_uniqueid: ""
+                status: "3"
+                style: "1"
+                text: "首张"
+                uniqueid: "1EE16F71-55FF-40ED-B390-0C68CDF21DE6"
+        },
+        {
+            icon: "ion-skip-forward"
+            isCollapse: 0
+            order: 6
+            parent_uniqueid: ""
+            status: "2"
+            style: "1"
+            text: "末张"
+            uniqueid: "7236D4C8-892E-484A-A0C2-EE23EE1C7120"
+        },
+        {
+            childs: [
+                {icon: "ion-edit"
+                    isCollapse: 1
+                    order: 0
+                    parent_uniqueid: "D8A2870E-3F22-4A84-AB4D-EB9F7F4B3E73"
+                    status: "2"
+                    style: "1"
+                    text: "修改"
+                    uniqueid: "E355C25A-7405-4184-9E0F-F079DB7E703E"
+                },
+                {
+                    icon: "ion-android-delete"
+                    isCollapse: 1
+                    order: 1
+                    parent_uniqueid: "D8A2870E-3F22-4A84-AB4D-EB9F7F4B3E73"
+                    status: "2"
+                    style: "1"
+                    text: "作废"
+                    uniqueid: "ECB23887-4B7F-4639-A23C-3788DEBFA20F"
+                }
+            ]
+            icon: ""
+            isCollapse: 0
+            order: 7
+            parent_uniqueid: ""
+            status: "2"
+            style: "1"
+            text: "修改"
+            uniqueid: "D8A2870E-3F22-4A84-AB4D-EB9F7F4B3E73"
+        }
+    ]
+}

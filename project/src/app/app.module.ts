@@ -9,12 +9,13 @@ import { Route, Router, ActivatedRoute, Params } from '@angular/router';
 import { routing } from './app.routing';
 import { ToolbatComponent } from './toolbat/toolbat.component';
 import { CestComponent } from './cest/cest.component';
-
+import { ScrollComponent } from './scroll/scroll.component';
 import { BaToolBar } from './baToolBar/baToolBar.component';
 import { BaToolbarDataService } from './baToolBar/baToolBar.service';
 import { DataTableModule, SharedModule, TreeModule, TreeNode } from 'primeng/primeng';
 import { CarService } from './primeng/carService';
 import { TransferenceService } from './home/home.service';
+import { Utils } from './scroll/util';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { TransferenceService } from './home/home.service';
     ToolbatComponent,
     BaToolBar,
     CestComponent,
+    ScrollComponent,
   ],
   imports: [
     RouterModule,
@@ -33,7 +35,7 @@ import { TransferenceService } from './home/home.service';
     // TreeModule,
   ],
   // CarService, TreeDragDropService
-  providers: [BaToolbarDataService, CarService, TransferenceService],
+  providers: [BaToolbarDataService, CarService, TransferenceService,Utils],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

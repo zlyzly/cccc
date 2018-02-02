@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ToolbatComponent } from './toolbat/toolbat.component';
 import { BaToolBar } from './baToolBar/baToolBar.component';
 import { CestComponent } from './cest/cest.component';
+import { ScrollComponent } from './scroll/scroll.component';
 const routes: Routes = [
     {
         path: '',
@@ -13,11 +14,11 @@ const routes: Routes = [
         children: [
             { path: 'home', component: HomeComponent },
             { path: 'prime', component: PrimengComponent },
-            // { path: 'home', component: HomeComponent },
+            { path: 'scroll', component: ScrollComponent },
             { path: 'toolbar', component: BaToolBar },
             { path: 'linstenner', component: CestComponent },
         ],
     },
 ];
 
-export const routing :ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
