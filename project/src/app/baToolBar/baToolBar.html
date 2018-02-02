@@ -2,8 +2,8 @@
 6.status:状态 1:隐藏，不显示，2:禁用，不可点，3:启用可点，4:锁定。
 -->
 
-<div class="toolbar" >
-    <ng-container *ngFor='let its of dp;let i=index;'>
+<div class="toolbar">
+    <ng-container *ngFor='let its of dp.data.content;let i=index;'>
         <ng-container *ngIf='its.childs'>
             <div class="tbgroup {{i == 0 ?'tbgroup-first': ''}}">
                 <div class="tbgroup-content">
@@ -27,8 +27,14 @@
                                                 </div>
                                             </ng-container>
                                         </ng-container>
-                                        <ng-container *ngIf='co.isCollapse ===1'>
-                                        </ng-container>
+
+                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" *ngIf='i ==child.childs.length-1'
+                                            class="btn  dropdown-toggle ion-arrow-down-b"> </button>
+                                        <ul class="dropdown-menu">
+                                            <ng-container *ngFor='let co of child.childs;let i = index;'>
+                                                <li *ngIf='co.isCollapse !==0'><a href='javascript:;'>{{co.text}}<i [hidden]="co.status !== '4'" class="ion-locked"></i></a></li>
+                                            </ng-container>
+                                        </ul>
                                     </ng-container>
                                     <ng-container *ngIf='co.childs'>
 
@@ -53,6 +59,7 @@
 
                             </ng-container>
                             <ng-container *ngIf='child.isCollapse ===1'>
+                                <!-- <span class='icon ion-arrow-down-b'>111</span> -->
                             </ng-container>
                             <!-- <ng-container *ngIf='child.isCollapse===1'>
                         <ng-container *ngIf='!its.fl'>

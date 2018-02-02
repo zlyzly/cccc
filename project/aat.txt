@@ -1,0 +1,195 @@
+import { Injectable, Component } from '@angular/core';
+import { Default_data_toolbar } from './baToolBar.defalutdata';
+import { Default_data_toolbara } from './bartool.defalut';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { CHttp } from '../../../ng_ext/http_ext.service';
+import { ToolbarSettingService } from '../../../pages/systemSetting/toolbarmgr/components/toolbarsetting/toolbarsetting.service'
+import { CompositionType } from './baToolBar.enum';
+import * as _ from 'lodash';
+import { deepExtend } from '../../../utils/helpers';
+import { BaMenuService } from '../../services';
+// export class ToolbarDatas {
+//   constructor(
+//     public commonToolbarSetting: any,//由工具栏生成的数据
+//     public pageToolbarSetting: any,//由菜单栏配置的按钮
+//     public customerToolbarSetting: any,//程序员自定义的按钮 优先级最高，默认数据的优先级最低
+//   ) { }
+// }
+
+@Injectable()
+export class BaToolbarDataService {
+  public commonToolbarSetting: object = {};
+  public pageToolbarSetting: object = {};
+  public customerToolbarSetting: object = {};
+  public data = undefined;
+  public default_data;
+  public Default_data_tool;
+  private onToolBarItemClick = (e) => { };
+  constructor(private service: BaMenuService, private srv: ToolbarSettingService, private http: CHttp) {
+    // 通过工具栏管理配置的按钮（登录过之后就请求一遍）
+    this.srv.getDatas(this.http).then((res) => {
+      if (res) {
+        let obj = { name: 'toolbar', icon: 'ion-android-refresh', text: ``, style: '', compositiontype: 'composition', content: res };
+        if (obj) {
+          this.commonToolbarSetting = this.CompositionDatas(this.Default_data_tool, obj);
+        }
+      }
+      console.log(`common`, this.commonToolbarSetting);
+    });
+
+    // 得到菜单栏配置的按钮（点击菜单栏就会请求一遍）
+    this.service.getData().subscribe(res => {
+      if (res) {
+        this.pageToolbarSetting = { name: 'toolbar', icon: 'ion-android-refresh', text: ``, style: '', compositiontype: 'composition', content: res };
+        // console.log(this.pageToolbarSetting);
+        if (this.pageToolbarSetting) {
+          this.getToolBarSetting();
+        } else {
+          this.data = this.commonToolbarSetting;
+        }
+      }
+    });
+    // 先赋值 没有值就取默认值
+    this.default_data = Default_data_toolbar;
+    this.Default_data_tool = Default_data_toolbara;
+    // 没有数据传过来就用默认的（初始化就执行一次）
+    if (!this.data) {
+      this.data = this.Default_data_tool;
+    }
+    // 假设有值的时候就要考虑优先级的问题
+    else {
+      this.getToolBarSetting();
+    }
+  }
+
+  public toolbarItemClick(e) {
+    this.onToolBarItemClick(e);
+  }
+  // 数据整合
+  private CompositionData(masterdata, slavedata) {
+    masterdata.content.forEach((e1: any) => {
+      slavedata.content.forEach((e: any) => {
+        if (e1.name === e.name) {
+          this.assignment(e1, e)
+        } else {
+          this.Recursive(e1, e)
+        }
+      });
+    });
+    return masterdata;
+  }
+  // 
+  private CompositionDatas(masterdata, slavedata) {
+    masterdata.content.forEach((e1: any) => {
+      slavedata.content.forEach((e: any) => {
+        if (e1.text === e.text) {
+          this.assignment(e1, e)
+        } else {
+          this.Recursives(e1, e)
+        }
+      });
+    });
+    return masterdata;
+  }
+  // 最后整合优先级的数剧
+  getToolBarSetting() {
+    console.log(33333)
+    //--- 需要整合与默认的数据===d1 并且判断是否有pageTool 
+    // 1,有继续整合 d1与 pageTool数据 ===d2
+    // 1.1判断是否有custom
+    //  1.1.1 有，整合 d2 与 custom ===d3
+    //  1.1.2 显示 d3 
+    // 1.2 无。显示 d2
+    // 2.无，显示 d1
+    //---- 无common 直接显示默认
+    // this.data = this.commonToolbarSetting;
+    let pageToolbarData, customToolbarData;
+    if (this.commonToolbarSetting) {
+      pageToolbarData = this.CompositionDatas(this.commonToolbarSetting, this.pageToolbarSetting)
+      console.log(pageToolbarData);
+      return pageToolbarData;
+      //   if (this.customerToolbarSetting['content'].length > 0) {
+      //     console.log(3)
+      //     // customToolbarData = this.CompositionData(pageToolbarData, this.customerToolbarSetting)
+      //     // this.data = customToolbarData;
+      //     // this.data = this.data;
+    } else {
+      return pageToolbarData;
+    }
+    // }
+  }
+
+  // 赋值
+  assignment(el, e) {
+    for (var key in e) {
+      if (e.hasOwnProperty(key)) {
+        if (e[key] !== "") {
+          el.icon = e.icon;
+          el.isCollapse = e.isCollapse;
+          el.name = e.name;
+          el.order = e.order;
+          el.status = e.status;
+          el.style = e.style;
+          el.text = e.text
+        } else {
+          break;
+        }
+      }
+    }
+  }
+
+  // 递归循环
+  Recursive(obj, e) {
+    if (obj.childs) {
+      obj.childs.forEach((e2: any) => {
+        if (e2.name === e.name) {
+          console.log(e);
+          this.assignment(e2, e)
+        } else {
+          this.Recursive(e2, e)
+        }
+      });
+    }
+  }
+
+  Recursives(obj, e) {
+    if (obj.childs) {
+      obj.childs.forEach((e2: any) => {
+        if (e2.text === e.text) {
+          this.assignment(e2, e)
+        } else {
+          this.Recursives(e2, e)
+        }
+      });
+    }
+  }
+  //开发者接口
+  public registerToolbarItemClick(event) {
+    this.onToolBarItemClick = event;
+  }
+
+  //开发者接口,页面注册按钮,如果数据存在，就替换掉默认数据
+  public registerBaToolBar(data) {
+    this.customerToolbarSetting = data;
+    // console.log(this.data)
+    // 但是每个页面在用注册按钮事件时 需要去优先级最高的配置的数据，之后是所有新增的按钮数据。
+    // 聚合 传入的菜单数据 ，数据结构是默认的结构，但是传入的结构是对象所有按钮都是平行的关系，传过来之后和默认的整合
+    if (data.compositiontype === CompositionType["1"]) {
+      // if (!this.commonToolbarSetting && !this.pageToolbarSetting) {
+      this.getToolBarSetting();
+      // } else {
+      // this.data = this.CompositionData(this.default_data, data);
+      // }
+
+      // 执行这里
+      // this.data = this.CompositionData(this.default_data, data);
+      // this.data = deepExtend({}, this.default_data, data);
+      console.log("经过转换后的工具栏data", this.data);
+    }
+
+    // console.log("转换后的");
+    // 使用传入的菜单数据  覆盖默认菜单数据
+    if (data.compositiontype === CompositionType["2"]) {
+    }
+  }
+}

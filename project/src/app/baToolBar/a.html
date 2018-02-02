@@ -1,38 +1,95 @@
-<div class="btn-group" role="group" aria-label="..." *ngFor='let its of dp;let i=index;'>
-        <!-- 一级 -->
-        <button class='abox' type='button' class='btn btn-default' [style.display]="its.status == '1'? 'none':'block'" [disabled]="its.status == '2'? true:false">
-            <ng-container *ngIf='its.childs'>
-                111
-                <div class="btn-group" role="group" aria-label="..." *ngFor='let child of its.childs;let i=index;'>
-                    <div class="btn-group" role="group">
-                        <!-- 存在的话是一个组不存在是一个按钮 -->
+<!-- 查询 每一个图表。每一个组都要带索引位置不固定
+6.status:状态 1:隐藏，不显示，2:禁用，不可点，3:启用可点，4:锁定。
+-->
+
+<div class="toolbar clearfix" [class.resize]="resize" maxHeight="100" [class.resize-alt]="!resize">
+    <ng-container *ngFor='let its of dp.data.content;let i=index;'>
+        <ng-container *ngIf='its.childs'>
+            <div class="tbgroup {{i == 0 ?'tbgroup-first': ''}}">
+                <div class="tbgroup-content">
+                    <ng-container *ngFor='let child of its.childs;let i=index;'>
                         <ng-container *ngIf='child.childs'>
-                            <!-- 二级 -->
-                            <button  type='button'  class='btn btn-default' [disabled]="child.status == '2'? true:false" [style.display]="child.status == '1'? 'none':'block'">
-                                <div class="btn-group" role="group"  aria-label="..." *ngFor='let co of child.childs;let i = index;'>
-                                    <!-- 判断在里边外边显示 -外 -->
-                                    <div class="btn-group" role="group">
-                                        <button type="button" (click)='lock(co)' *ngIf='!co.isCollapse' [disabled]="child.status == '2'? true:co.status == '2'? true:false" [style.display]="co.status == '1'? 'none':'block'"  class="btn btn-default {{co.icon}}"
-                                            title='{{co.text}}'><i [hidden]="co.status !== '4'" class="ion-locked"></i></button>
-                                        <button type="button" data-toggle="dropdown" [disabled]="child.status == '2'? true:false" aria-haspopup="true" aria-expanded="true"  *ngIf='i ==child.childs.length-1' class="btn btn-default dropdown-toggle ion-arrow-down-b" > </button>
+                            <!-- 组 -->
+                            <div class='toolbar-item-group' [style.width]='child.width'>
+                                <ng-container *ngFor='let co of child.childs;let ii=index;'>
+                                    <ng-container *ngIf='!co.childs'>
+                                        <ng-container *ngIf='co.isCollapse ===0'>
+                                            <ng-container *ngIf='co.style ==="1"'>
+                                                <div class='toolbar-item-a' (click)='getNode(co)' [ngClass]='co.status =="2"?"toolbar-item_disable":""' [hidden]='co.status===0'>
+                                                    <span class='icons {{co.icon}} icon' title='{{co.text}}'></span>
+                                                    <span class='icon-text'>{{co.text}}</span>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngIf='co.style ==="2"'>
+                                                <div class='toolbar-item-b' (click)='getNode(co)' [ngClass]='co.status =="2"?"toolbar-item_disable":""' [hidden]='co.status===0'>
+                                                    <span class='icons {{co.icon}} icon' title='{{co.text}}'></span>
+                                                    <span class='icon-text'>{{co.text}}</span>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                        <button [hidden]='co.isCollapse ===0' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" *ngIf='i ==child.childs.length-1'
+                                            class="btn btn-default dropdown-toggle ion-arrow-down-b"> </button>
                                         <ul class="dropdown-menu">
                                             <ng-container *ngFor='let co of child.childs;let i = index;'>
-                                                <li *ngIf='co.isCollapse' (click)='lock(co)'  [style.display]="co.status == '1'? 'none':'block'" ><a href='javascript:;'>{{co.text}}<i [hidden]="co.status !== '4'" class="ion-locked"></i></a></li>
+                                                <li *ngIf='co.isCollapse !==0'><a href='javascript:;'>{{co.text}}<i [hidden]="co.status !== '4'" class="ion-locked"></i></a></li>
                                             </ng-container>
                                         </ul>
-                                    </div>
-                                </div>
-                                <i [hidden]="child.status !== '4'"  class="ion-locked"></i>
-                            </button>
+                                        <!-- <ng-container *ngIf='co.isCollapse ===1'>
+                                            <span>111</span>
+                                        </ng-container> -->
+                                    </ng-container>
+                                    <ng-container *ngIf='co.childs'>
+                                        <ng-container *ngFor='let c of co.childs;let i=index;'>
+                                            {{c.text}}
+                                            <ng-container *ngIf='!c.childs'>
+                                                <ng-container *ngIf='c.isCollapse ===0'>
+                                                    <ng-container *ngIf='c.style ==="1"'>
+                                                        <div class='toolbar-item-a' (click)='getNode(c)' [ngClass]='c.status =="2"?"toolbar-item_disable":""' [hidden]='c.status===0'>
+                                                            <span class='icons {{c.icon}} icon' title='{{c.text}}'></span>
+                                                            <span class='icon-text'>{{c.text}}</span>
+                                                        </div>
+                                                    </ng-container>
+                                                    <ng-container *ngIf='c.style ==="2"'>
+                                                        <div class='toolbar-item-b' (click)='getNode(c)' [ngClass]='c.status =="2"?"toolbar-item_disable":""' [hidden]='c.status===0'>
+                                                            <span class='icons {{c.icon}} icon' title='{{c.text}}'></span>
+                                                            <span class='icon-text'>{{c.text}}</span>
+                                                        </div>
+                                                    </ng-container>
+                                                </ng-container>
+                                            </ng-container>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
                         </ng-container>
-                                <!-- 没有childs是按钮 -->
                         <ng-container *ngIf='!child.childs'>
-                            <button (click)='lock(child)' [disabled]="child.status == '2'? true:false" class='btn btn-default {{child.icon}}' [style.display]="child.status == '1'? 'none':'block'" title='{{child.text}}'> <i [hidden]="child.status !== '4'" class="ion-locked"></i></button>
+                            <ng-container *ngIf='child.isCollapse ===0'>
+                                <ng-container *ngIf='child.style ==="1"'>
+                                    <div class='toolbar-item-a' (click)='getNode(child)' [ngClass]='child.status =="2"?"toolbar-item_disable":""' [hidden]='child.status==="0"'>
+                                        <span class='icons {{child.icon}} icon' title='{{child.text}}'></span>
+                                        <span class='icon-text'>{{child.text}}</span>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf='child.style ==="2"'>
+                                    <div class='toolbar-item-b' (click)='getNode(child)' [ngClass]='child.status =="2"?"toolbar-item_disable":""' [hidden]='child.status==="0"'>
+                                        <span class='icons {{child.icon}} icon' title='{{child.text}}'></span>
+                                        <span class='icon-text'>{{child.text}}</span>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                            <ng-container *ngIf='child.isCollapse ===1'>
+                                <span>222</span>
+                            </ng-container>
                         </ng-container>
-                    </div>
+                    </ng-container>
                 </div>
-            </ng-container>
-            <i [hidden]="its.status !== '4'" (click)='lock(its)' class="ion-locked"></i>
-        <!-- <span class='groupname'>{{its.name}}</span> -->
-        </button>
-    </div>
+                <div class='tbgroup-title'>
+                    <span class=''>{{its.text}}</span>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf='!its.childs'>
+
+        </ng-container>
+    </ng-container>
+</div>
