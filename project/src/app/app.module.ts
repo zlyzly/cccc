@@ -16,6 +16,8 @@ import { DataTableModule, SharedModule, TreeModule, TreeNode } from 'primeng/pri
 import { CarService } from './primeng/carService';
 import { TransferenceService } from './home/home.service';
 import { Utils } from './scroll/util';
+import { DragmoveComponent } from './dragmove/dragmove.component';
+import { AngularDraggableModule} from 'angular2-draggable';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,17 +27,19 @@ import { Utils } from './scroll/util';
     BaToolBar,
     CestComponent,
     ScrollComponent,
+    DragmoveComponent,
   ],
   imports: [
     RouterModule,
     BrowserModule,
     routing,
+    AngularDraggableModule
     // DataTableModule,
     // SharedModule,
     // TreeModule,
   ],
   // CarService, TreeDragDropService
-  providers: [BaToolbarDataService, CarService, TransferenceService,Utils],
+  providers: [BaToolbarDataService, CarService, TransferenceService, Utils],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

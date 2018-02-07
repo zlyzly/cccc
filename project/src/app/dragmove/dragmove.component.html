@@ -1,0 +1,12 @@
+<p>
+  dragmove works!
+</p>
+<div ngDraggable class="card">
+  <div class="card-block">拖动内容</div>
+</div>
+
+<div ngDraggable class="card" [handle]="dragHtml">
+  <div #dragHtml class="card-header">这里可以拖动窗口</div>
+  <div class="card-block">这里不能拖动窗口</div>
+</div>
+<div ngDraggable class="card" (started)="onDragBegin($event)" (stopped)="onDragEnd($event)">Drag me!</div>
