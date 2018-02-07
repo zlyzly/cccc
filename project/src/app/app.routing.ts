@@ -7,6 +7,7 @@ import { ToolbatComponent } from './toolbat/toolbat.component';
 import { BaToolBar } from './baToolBar/baToolBar.component';
 import { CestComponent } from './cest/cest.component';
 import { ScrollComponent } from './scroll/scroll.component';
+import { DragmoveComponent } from './dragmove/dragmove.component';
 const routes: Routes = [
     {
         path: '',
@@ -17,6 +18,7 @@ const routes: Routes = [
             { path: 'scroll', component: ScrollComponent },
             { path: 'toolbar', component: BaToolBar },
             { path: 'linstenner', component: CestComponent },
+            { path: 'dragmove', component: DragmoveComponent },
         ],
     },
 ];
